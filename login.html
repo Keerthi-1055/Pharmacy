@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediNow - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen font-sans">
+
+  <div class="bg-white shadow-lg rounded-2xl w-full max-w-md p-8">
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <div class="bg-blue-600 text-white font-bold rounded-full w-12 h-12 flex items-center justify-center text-xl">M</div>
+    </div>
+
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Login to MediNow</h1>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="space-y-5">
+      <div>
+        <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required
+               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-2" for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required
+               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+
+      <button type="submit"
+              class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Login
+      </button>
+    </form>
+
+    <!-- Register Redirect -->
+    <p class="text-center text-gray-600 mt-6 text-sm">
+      Not yet registered?
+      <a href="register.html" class="text-blue-600 hover:underline font-medium">Register here</a>
+    </p>
+
+    <!-- Back to Home -->
+    <div class="text-center mt-4">
+      <a href="index.html" class="text-gray-500 text-sm hover:text-blue-600 transition">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Login Script -->
+  <script>
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Simulated login check
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (email && password) {
+        // Save login state
+        localStorage.setItem('loggedIn', 'true');
+
+        // Redirect to home
+        alert('Login successful!');
+        window.location.href = 'index.html';
+      } else {
+        alert('Please enter valid credentials.');
+      }
+    });
+  </script>
+
+</body>
+</html>
