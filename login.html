@@ -51,24 +51,30 @@
   <!-- Login Script -->
   <script>
     const form = document.getElementById('loginForm');
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Simulated login check
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
 
+      // Simple validation (you can replace this with backend logic later)
       if (email && password) {
-        // Save login state
+        // Store login state in localStorage
         localStorage.setItem('loggedIn', 'true');
 
         // Redirect to home
-        alert('Login successful!');
+        alert('✅ Login successful!');
         window.location.href = 'index.html';
       } else {
-        alert('Please enter valid credentials.');
+        alert('⚠️ Please enter valid credentials.');
       }
     });
+
+    // If already logged in, redirect to home page
+    if (localStorage.getItem('loggedIn') === 'true') {
+      window.location.href = 'index.html';
+    }
   </script>
 
 </body>

@@ -1,227 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MediNow - Checkout</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
   <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
       <a href="index.html" class="flex items-center gap-2">
         <div class="bg-blue-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center">M</div>
-        <span class="font-semibold">MediNow</span>
+        <span class="font-semibold text-lg">MediNow</span>
       </a>
-      <nav class="flex gap-4 text-sm">
-        <a href="search.html">Search</a>
-        <a href="stores.html">Stores</a>
-        <a href="order.html">Orders</a>
+      <nav class="flex items-center gap-6 text-gray-700 font-medium">
+        <a href="search.html" class="hover:text-blue-600">Search</a>
+        <a href="stores.html" class="hover:text-blue-600">Stores</a>
+        <a href="order.html" class="hover:text-blue-600">Orders</a>
+        <a href="cart.html" class="hover:text-blue-600">🛒 Cart</a>
+        <a id="authButton" href="login.html"
+          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Login</a>
       </nav>
     </div>
   </header>
 
-  <!-- Content -->
-  <main class="max-w-3xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-bold mb-6">Checkout</h1>
-    
-    <!-- Checkout Form -->
-    <form id="checkout-form" class="space-y-6 bg-white shadow rounded-lg p-6">
-      <!-- Full Name -->
+  <!-- Checkout Form -->
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold text-center mb-8">Checkout</h1>
+
+    <form id="checkoutForm" class="bg-white shadow-lg rounded-xl p-8 space-y-6">
       <div>
-        <label class="block text-sm font-medium mb-2">Full Name</label>
-        <input type="text" id="fullname" class="w-full px-4 py-2 border rounded-lg" required>
+        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
       </div>
 
-      <!-- Address -->
       <div>
-        <label class="block text-sm font-medium mb-2">Delivery Address</label>
-        <textarea id="address" class="w-full px-4 py-2 border rounded-lg" required></textarea>
+        <label for="address" class="block text-gray-700 font-medium mb-2">Delivery Address</label>
+        <textarea id="address" placeholder="Enter delivery address" required
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
       </div>
 
-      <!-- Payment Method -->
       <div>
-        <label class="block text-sm font-medium mb-2">Payment Method</label>
-        <select id="payment-method" class="w-full px-4 py-2 border rounded-lg">
+        <label for="payment" class="block text-gray-700 font-medium mb-2">Payment Method</label>
+        <select id="payment"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
           <option>Cash on Delivery</option>
-          <option>Credit/Debit Card</option>
-          <option>UPI / Wallet</option>
+          <option>UPI</option>
+          <option>Credit / Debit Card</option>
         </select>
       </div>
 
-      <!-- Card Payment Section -->
-      <div id="card-section" class="hidden mt-4">
-        <label class="block text-sm font-medium mb-2">Card Number</label>
-        <input type="text" id="card-number" maxlength="16" placeholder="Enter 16-digit card number" class="w-full px-4 py-2 border rounded-lg mb-3">
-        
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium mb-2">Expiry Date (MM/YY)</label>
-            <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" class="w-full px-4 py-2 border rounded-lg">
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">CVV</label>
-            <input type="password" id="cvv" maxlength="3" placeholder="123" class="w-full px-4 py-2 border rounded-lg">
-          </div>
-        </div>
-      </div>
-
-      <!-- UPI Payment Section -->
-      <div id="upi-section" class="hidden mt-4">
-        <label class="block text-sm font-medium mb-2">Enter your UPI ID</label>
-        <input type="text" id="upi-id" placeholder="e.g. keerthi@oksbi" class="w-full px-4 py-2 border rounded-lg mb-3">
-        <p class="text-gray-600 text-sm">Send payment to our official UPI ID:</p>
-        <p class="font-semibold text-blue-700 mt-1">medinow@okaxis</p>
-      </div>
-
-      <!-- Prescription Upload -->
       <div>
-        <label class="block text-sm font-medium mb-2">Upload Prescription (optional)</label>
-        <input type="file" id="prescription" accept="image/*" class="w-full border rounded-lg px-3 py-2">
+        <label for="prescription" class="block text-gray-700 font-medium mb-2">Upload Prescription (optional)</label>
+        <input type="file" id="prescription"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
         <p class="text-xs text-gray-500 mt-1">Cannot upload blank or menu card images.</p>
       </div>
 
-      <!-- Submit -->
-      <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg">Place Order</button>
+      <button type="submit"
+        class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Place Order
+      </button>
     </form>
-
-    <!-- ✅ Review Section (Initially Hidden) -->
-    <section id="review-section" class="hidden mt-12 bg-white shadow rounded-lg p-6">
-      <h2 class="text-2xl font-bold mb-4">Leave a Review</h2>
-      <form id="review-form" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium mb-2">Your Name</label>
-          <input type="text" id="review-name" class="w-full border rounded-lg px-3 py-2" required>
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-2">Rating</label>
-          <select id="review-rating" class="w-full border rounded-lg px-3 py-2" required>
-            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
-            <option value="4">⭐⭐⭐⭐ (4)</option>
-            <option value="3">⭐⭐⭐ (3)</option>
-            <option value="2">⭐⭐ (2)</option>
-            <option value="1">⭐ (1)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-2">Your Review</label>
-          <textarea id="review-text" rows="3" class="w-full border rounded-lg px-3 py-2" placeholder="Share your experience..." required></textarea>
-        </div>
-        <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-lg">Submit Review</button>
-      </form>
-    </section>
   </main>
 
+  <!-- Footer -->
+  <footer class="bg-gray-100 border-t mt-20">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+      <p>© 2025 MediNow. All rights reserved.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-blue-600">Privacy Policy</a>
+        <a href="#" class="hover:text-blue-600">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login State Script -->
   <script>
-    const form = document.getElementById('checkout-form');
-    const paymentMethod = document.getElementById('payment-method');
-    const upiSection = document.getElementById('upi-section');
-    const cardSection = document.getElementById('card-section');
-    const reviewSection = document.getElementById('review-section');
+    const authButton = document.getElementById("authButton");
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
-    // Toggle payment sections
-    paymentMethod.addEventListener('change', () => {
-      if (paymentMethod.value === 'UPI / Wallet') {
-        upiSection.classList.remove('hidden');
-        cardSection.classList.add('hidden');
-      } 
-      else if (paymentMethod.value === 'Credit/Debit Card') {
-        cardSection.classList.remove('hidden');
-        upiSection.classList.add('hidden');
-      } 
-      else {
-        upiSection.classList.add('hidden');
-        cardSection.classList.add('hidden');
-      }
-    });
-
-    // Validate prescription
-    function validatePrescription(file) {
-      if (!file) return true;
-      const name = file.name.toLowerCase();
-      return !(name.includes('menu') || name.includes('blank'));
+    if (isLoggedIn) {
+      authButton.textContent = "Logout";
+      authButton.href = "#";
+      authButton.addEventListener("click", () => {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "login.html";
+      });
+    } else {
+      authButton.textContent = "Login";
+      authButton.href = "login.html";
     }
 
-    // Submit order (no backend)
-    async function submitOrder(status = "Pending") {
-      const user = JSON.parse(localStorage.getItem('loggedInUser'));
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const total = cart.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')) * item.qty, 0);
-
-      const prescriptionFile = document.getElementById('prescription').files[0];
-      if (!validatePrescription(prescriptionFile)) {
-        alert("❌ Prescription invalid (cannot be blank or menu card)");
-        return;
-      }
-
-      const upiId = document.getElementById('upi-id')?.value || "";
-      const cardNumber = document.getElementById('card-number')?.value || "";
-      const expiry = document.getElementById('expiry')?.value || "";
-      const cvv = document.getElementById('cvv')?.value || "";
-
-      if (paymentMethod.value === 'Credit/Debit Card' && (!cardNumber || !expiry || !cvv)) {
-        alert("Please fill in all card details before placing the order.");
-        return;
-      }
-
-      if (paymentMethod.value === 'UPI / Wallet' && !upiId.trim()) {
-        alert("Please enter your UPI ID before placing the order.");
-        return;
-      }
-
-      const orderData = {
-        email: user?.email || "guest@example.com",
-        items: cart.map(i => `${i.name} x${i.qty}`),
-        total: total,
-        address: document.getElementById('address').value,
-        status: status,
-        paymentMethod: paymentMethod.value,
-        date: new Date().toLocaleString()
-      };
-
-      try {
-        // ✅ Simulate server response (no backend required)
-        console.log("Order data:", orderData);
-        await new Promise(resolve => setTimeout(resolve, 1000)); // fake delay
-        alert("✅ Order placed successfully!");
-
-        localStorage.removeItem('cart');
-        form.classList.add('hidden');
-        reviewSection.classList.remove('hidden');
-      } catch (err) {
-        alert("❌ Something went wrong!");
-      }
+    // Protect checkout
+    if (!isLoggedIn) {
+      alert("Please login first!");
+      window.location.href = "login.html";
     }
 
-    // Handle checkout form submit
-    form.addEventListener('submit', async (e) => {
+    // Order submission
+    const form = document.getElementById("checkoutForm");
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const user = JSON.parse(localStorage.getItem('loggedInUser'));
-      if (!user) { alert("Please login first!"); return; }
-
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (cart.length === 0) { alert("Your cart is empty!"); return; }
-
-      const paymentStatus = paymentMethod.value === 'Cash on Delivery' ? "Pending" : "Paid";
-      await submitOrder(paymentStatus);
-    });
-
-    // Handle review submission
-    document.getElementById('review-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const review = {
-        name: document.getElementById('review-name').value,
-        rating: document.getElementById('review-rating').value,
-        text: document.getElementById('review-text').value,
-        date: new Date().toLocaleString()
-      };
-      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-      reviews.push(review);
-      localStorage.setItem('reviews', JSON.stringify(reviews));
-      alert("✅ Thank you for your feedback!");
-      window.location.href = 'index.html';
+      alert("Order placed successfully!");
+      form.reset();
+      window.location.href = "index.html";
     });
   </script>
 </body>
