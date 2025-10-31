@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MediNow - Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -11,18 +11,18 @@
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-      <a href="index.html" class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2">
         <div class="bg-blue-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center">M</div>
         <span class="font-semibold text-lg">MediNow</span>
       </a>
       <nav class="flex items-center gap-6 text-gray-700 font-medium">
-        <a href="search.html" class="hover:text-blue-600">Search</a>
-        <a href="stores.html" class="hover:text-blue-600">Stores</a>
-        <a href="order.html" class="hover:text-blue-600">Orders</a>
-        <a href="cart.html" class="hover:text-blue-600">🛒 Cart</a>
+        <a href="/search" class="hover:text-blue-600">Search</a>
+        <a href="/stores" class="hover:text-blue-600">Stores</a>
+        <a href="/order" class="hover:text-blue-600">Orders</a>
+        <a href="/cart" class="hover:text-blue-600">🛒 Cart</a>
 
         <!-- Login / Logout Button -->
-        <a id="authButton" href="login.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Login</a>
+        <a id="authButton" href="/login" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Login</a>
       </nav>
     </div>
   </header>
@@ -36,8 +36,8 @@
           Search thousands of medicines, check availability in nearby pharmacies, and get them delivered to your doorstep in no time.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="search.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">Search Medicines</a>
-          <a href="stores.html" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition">Find Stores</a>
+          <a href="/search" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">Search Medicines</a>
+          <a href="/stores" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition">Find Stores</a>
         </div>
         <p class="mt-4 text-sm text-gray-500">Available 24/7. Safe and secure delivery.</p>
       </div>
@@ -68,7 +68,7 @@
     <!-- CTA Section -->
     <section class="mt-20 text-center">
       <h2 class="text-3xl font-bold mb-6">Ready to order your medicines?</h2>
-      <a href="search.html" class="px-8 py-4 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition text-lg">Start Searching</a>
+      <a href="/search" class="px-8 py-4 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition text-lg">Start Searching</a>
     </section>
   </main>
 
@@ -94,12 +94,12 @@
       authButton.href = '#';
       authButton.addEventListener('click', () => {
         localStorage.removeItem('loggedIn');  // clear session
-        window.location.href = 'login.html';  // redirect to login page
+        window.location.href = '/login';  // redirect to login page
       });
     } else {
       // Show Login button when not logged in
       authButton.textContent = 'Login';
-      authButton.href = 'login.html';
+      authButton.href = '/login';
     }
   </script>
 
